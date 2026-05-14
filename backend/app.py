@@ -37,7 +37,7 @@ app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
 app.config['MAIL_USERNAME'] = 'portalplacement3@gmail.com'
-app.config['MAIL_PASSWORD'] = 'jkby zwha elth qpmz'
+app.config['MAIL_PASSWORD'] = os.getenv("MAIL_PASSWORD")
 app.config['MAIL_DEFAULT_SENDER'] = 'portalplacement3@gmail.com'
 
 cache = Cache()
