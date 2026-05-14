@@ -16,3 +16,15 @@ build/
 # OS junk
 .DS_Store
 Thumbs.db
+
+# Flask instance
+instance/
+
+# Redis
+*.rdb
+
+# Celery
+celerybeat-schedule
+
+# Generated exports
+*.csv
