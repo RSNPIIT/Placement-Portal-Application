@@ -1,0 +1,141 @@
+openapi: 3.0.0
+info:
+title: Placement Portal API
+description: REST API for managing student placements, job postings, and applications
+version: 1.0.0
+
+servers:
+
+* url: http://127.0.0.1:5000
+
+paths:
+
+/login:
+post:
+summary: User login
+requestBody:
+required: true
+responses:
+'200':
+description: Login successful
+'401':
+description: Invalid credentials
+
+/req:
+post:
+summary: Register a new user
+responses:
+'201':
+description: Registration successful
+
+/student/jobs:
+get:
+summary: Get all available jobs
+responses:
+'200':
+description: List of jobs
+
+/student/apply/{job_id}:
+post:
+summary: Apply for a job
+parameters:
+- name: job_id
+in: path
+required: true
+schema:
+type: integer
+responses:
+'201':
+description: Application successful
+'400':
+description: Already applied or invalid request
+
+/student/applications:
+get:
+summary: Get all applications of the logged-in student
+responses:
+'200':
+description: List of applications
+
+/student/profile:
+get:
+summary: Get student profile
+responses:
+'200':
+description: Profile data
+
+```
+put:
+  summary: Update student profile
+  responses:
+    '200':
+      description: Profile updated
+```
+
+/company/jobs:
+post:
+summary: Create a new job
+responses:
+'201':
+description: Job created
+
+```
+get:
+  summary: Get all jobs posted by company
+  responses:
+    '200':
+      description: List of jobs
+```
+
+/company/applicants:
+get:
+summary: Get all applicants for company jobs
+responses:
+'200':
+description: List of applicants
+
+/company/application/{app_id}/decision:
+post:
+summary: Shortlist or reject an application
+parameters:
+- name: app_id
+in: path
+required: true
+schema:
+type: integer
+responses:
+'200':
+description: Decision updated
+
+/company/application/{app_id}/schedule:
+put:
+summary: Schedule interview for a candidate
+parameters:
+- name: app_id
+in: path
+required: true
+schema:
+type: integer
+responses:
+'200':
+description: Interview scheduled
+
+/admin/dashboard:
+get:
+summary: Get admin dashboard statistics
+responses:
+'200':
+description: Dashboard data
+
+/admin/approve/{user_id}:
+post:
+summary: Approve a company
+parameters:
+- name: user_id
+in: path
+required: true
+schema:
+type: integer
+responses:
+'200':
+description: Company approved
